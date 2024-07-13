@@ -2,7 +2,7 @@ defaultNamespace: longhorn-system
 helm:
   repo: https://charts.longhorn.io
   chart: longhorn
-  version: v1.6.0 # Replace with the Longhorn version you'd like to install or upgrade to
+  version: v1.6.2
   releaseName: longhorn
 diff:
   comparePatches:
