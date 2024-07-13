@@ -5,9 +5,9 @@ helm:
   version: v1.6.2
   releaseName: longhorn
   values:
-    global:
-      cattle:
-        systemDefaultRegistry: "registry.cn-hangzhou.aliyuncs.com"
+    #global:
+    #  cattle:
+    #    systemDefaultRegistry: "registry.cn-hangzhou.aliyuncs.com"
     replicaCount: 2
     longhornManager:
         nodeSelector: {"node-role.kubernetes.io/master": "true"}
