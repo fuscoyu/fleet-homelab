@@ -1,6 +1,6 @@
 defaultNamespace: longhorn-system
 helm:
-  repo: https://github.com/rancher
+  repo: https://releases.rancher.com/server-charts/stable
   chart: rancher
   version: v2.8.5
   releaseName: rancher
