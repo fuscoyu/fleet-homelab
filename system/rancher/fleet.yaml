@@ -1,0 +1,8 @@
+defaultNamespace: longhorn-system
+helm:
+  repo: https://github.com/rancher
+  chart: rancher
+  version: v2.8.5
+  releaseName: rancher
+  values:
+    hostname: rancher.homelab

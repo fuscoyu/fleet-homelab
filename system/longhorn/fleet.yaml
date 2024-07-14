@@ -24,6 +24,10 @@ helm:
     ingress: 
       enabled: true
       host: longhorn.homelab
+    persistence:
+      defaultClassReplicaCount: 2
+    defaultSettings:
+      v2DataEngine: true
 
 diff:
   comparePatches:
