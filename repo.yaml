@@ -1,0 +1,10 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: repo
+  namespace: fleet-local
+spec:
+  branch: main
+  paths:
+    - ./gitrepo.yaml
+  repo: https://github.com/fuscoyu/fleet-homelab.git
