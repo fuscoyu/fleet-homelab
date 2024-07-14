@@ -7,5 +7,5 @@ spec:
   repo: https://github.com/fuscoyu/fleet-homelab.git
   branch: main
   paths:
-    - /system/longhorn
-    - /system/longhorn/storageclass
+    - /system/rancher/longhorn
+    - /system/rancher/longhorn/storageclass
