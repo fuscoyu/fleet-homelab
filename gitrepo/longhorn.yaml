@@ -7,5 +7,6 @@ spec:
   branch: main
   paths:
     - /system/longhorn
+    - /system/longhorn/storageclass
   paused: false
   repo: https://github.com/fuscoyu/fleet-homelab.git
