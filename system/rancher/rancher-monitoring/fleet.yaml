@@ -7,11 +7,11 @@ helm:
   values: 
     k3sServer:
       enabled: true
-    ingress: 
-      enable: true 
-      hosts: 
-        - grafana.homelab
     grafana: 
       adminPassword: grafana
+      ingress: 
+        enable: true 
+        hosts: 
+          - grafana.homelab
     upgrade:
       enabled: false
