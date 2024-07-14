@@ -1,0 +1,11 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: longhorn
+  namespace: fleet-local
+spec:
+  branch: main
+  paths:
+    - /system/longhorn
+  paused: false
+  repo: https://github.com/fuscoyu/fleet-homelab.git
