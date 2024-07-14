@@ -6,5 +6,5 @@ metadata:
 spec:
   branch: main
   paths:
-    - ./gitrepo.yaml
+    - ./repo.yaml
   repo: https://github.com/fuscoyu/fleet-homelab.git
