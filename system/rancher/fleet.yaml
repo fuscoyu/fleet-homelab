@@ -3,6 +3,6 @@ helm:
   repo: https://releases.rancher.com/server-charts/stable
   chart: rancher
   version: v2.8.5
-  # releaseName: rancher
+  releaseName: rancher
   values:
     hostname: rancher.homelab
