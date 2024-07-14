@@ -1,0 +1,17 @@
+defaultNamespace: cattle-monitoring-system
+helm:
+  releaseName: gpu-exporter
+  repo: https://nvidia.github.io/dcgm-exporter/helm-charts
+  chart: dcgm-exporter
+  version: 3.4.2
+  values: 
+    k3sServer:
+      enabled: true
+    grafana: 
+      adminPassword: grafana
+      ingress: 
+        enabled: true 
+        hosts: 
+          - grafana.homelab
+    upgrade:
+      enabled: false
