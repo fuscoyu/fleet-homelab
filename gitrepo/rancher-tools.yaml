@@ -1,10 +1,11 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: rancher
+  name: rancher-tools
   namespace: fleet-local
 spec:
   repo: https://github.com/fuscoyu/fleet-homelab.git
   branch: main
   paths:
-    - /system/rancher
+    - /system/rancher/rancher-monitoring-crd
+    - /system/rancher/rancher-monitoring
