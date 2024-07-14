@@ -8,7 +8,7 @@ spec:
   - name: http
     port: 8096
     protocol: TCP
-    targetPort: http
+    targetPort: 8096
   selector:
     app: jellyfin
   type: ClusterIP
