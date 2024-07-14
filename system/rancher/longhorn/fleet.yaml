@@ -9,18 +9,18 @@ helm:
      cattle:
        systemDefaultRegistry: ""
     replicaCount: 2
-    longhornManager:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
-    longhornDriver:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
-    longhornUI:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
-    longhornConversionWebhook:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
-    longhornAdmissionWebhook:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
-    longhornRecoveryBackend:
-        nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornManager:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornDriver:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornUI:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornConversionWebhook:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornAdmissionWebhook:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
+    # longhornRecoveryBackend:
+    #     nodeSelector: {"node-role.kubernetes.io/master": "true"}
     ingress: 
       enabled: true
       host: longhorn.homelab

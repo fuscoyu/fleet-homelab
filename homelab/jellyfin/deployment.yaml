@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+      namespace: jellyfin
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: asus
+      containers:
+        - env:
+            - name: TZ
+              value: Asia/Shanghai
+          image: linuxserver/jellyfin:10.9.7
+          imagePullPolicy: IfNotPresent
+          name: container-0
+          ports:
+            - containerPort: 8096
+              name: jellyfin
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          volumeMounts:
+            - mountPath: /config
+              name: jellyfin
+              subPath: docker/jellyfin/config
+            - mountPath: /data
+              name: jellyfin
+              subPath: media
+      restartPolicy: Always
+      volumes:
+        - hostPath:
+            path: /dev/dri
+            type: Directory
+          name: dri
+        - name: jellyfin
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc
