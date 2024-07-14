@@ -9,5 +9,3 @@ spec:
   paths:
     - /system/rancher/rancher-monitoring-crd
     - /system/rancher/rancher-monitoring
-    - /system/rancher/longhorn
-    - /system/rancher/longhorn/storageclass
