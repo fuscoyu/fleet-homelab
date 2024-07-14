@@ -10,7 +10,7 @@ helm:
     grafana: 
       adminPassword: grafana
       ingress: 
-        enable: true 
+        enabled: true 
         hosts: 
           - grafana.homelab
     upgrade:
