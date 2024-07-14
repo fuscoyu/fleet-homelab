@@ -4,9 +4,8 @@ metadata:
   name: rancher
   namespace: fleet-local
 spec:
+  repo: https://github.com/fuscoyu/fleet-homelab.git
   branch: main
   paths:
     - /system/rancher/rancher-monitoring-crd
     - /system/rancher/rancher-monitoring
-  paused: false
-  repo: https://github.com/fuscoyu/fleet-homelab.git

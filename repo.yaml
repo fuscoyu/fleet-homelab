@@ -4,7 +4,7 @@ metadata:
   name: repo
   namespace: fleet-local
 spec:
+  repo: https://github.com/fuscoyu/fleet-homelab.git
   branch: main
   paths:
-    - /gitrepo
-  repo: https://github.com/fuscoyu/fleet-homelab.git
+    - gitrepo

@@ -4,9 +4,8 @@ metadata:
   name: longhorn
   namespace: fleet-local
 spec:
+  repo: https://github.com/fuscoyu/fleet-homelab.git
   branch: main
   paths:
     - /system/longhorn
     - /system/longhorn/storageclass
-  paused: false
-  repo: https://github.com/fuscoyu/fleet-homelab.git
