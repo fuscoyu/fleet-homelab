@@ -6,3 +6,4 @@ helm:
   releaseName: rancher
   values:
     hostname: rancher.homelab
+    systemDefaultRegistry: "registry.cn-hangzhou.aliyuncs.com"
