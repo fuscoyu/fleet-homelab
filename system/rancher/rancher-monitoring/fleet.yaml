@@ -5,6 +5,9 @@ helm:
   chart: rancher-monitoring
   version: v103.1.1+up45.31.1 
   values: 
+    global:
+      cattle:
+        clusterId: local
     k3sServer:
       enabled: true
     grafana: 
