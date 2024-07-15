@@ -14,35 +14,38 @@ spec:
         app: jellyfin
       namespace: jellyfin
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: asus
+      runtimeClassName: nvidia
       containers:
-        - env:
-            - name: TZ
-              value: Asia/Shanghai
-          image: linuxserver/jellyfin:10.9.7
-          imagePullPolicy: IfNotPresent
-          name: container-0
-          ports:
-            - containerPort: 8096
-              name: jellyfin
-              protocol: TCP
-          securityContext:
-            allowPrivilegeEscalation: true
-            privileged: true
-          volumeMounts:
-            - mountPath: /config
-              name: jellyfin
-              subPath: docker/jellyfin/config
-            - mountPath: /data
-              name: jellyfin
-              subPath: media
+      - image: linuxserver/jellyfin:10.9.7
+        imagePullPolicy: IfNotPresent
+        name: container-0
+        ports:
+          - containerPort: 8096
+            name: jellyfin
+            protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+        volumeMounts:
+          - mountPath: /config
+            name: jellyfin
+            subPath: docker/jellyfin/
+          - mountPath: /data
+            name: jellyfin
+            subPath: media
+        resources:
+          limits:
+            nvidia.com/gpu: 1 
+        env:
+          - name: TZ
+            value: Asia/Shanghai
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: all
+          - name: NVIDIA_DRIVER_CAPABILITIES
+            value: all
+
       restartPolicy: Always
       volumes:
-        - hostPath:
-            path: /dev/dri
-            type: Directory
-          name: dri
         - name: jellyfin
           persistentVolumeClaim:
             claimName: jellyfin-pvc
