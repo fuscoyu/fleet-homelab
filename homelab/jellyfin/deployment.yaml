@@ -5,6 +5,11 @@ metadata:
   namespace: jellyfin
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
   selector:
     matchLabels:
       app: jellyfin
@@ -16,7 +21,7 @@ spec:
     spec:
       runtimeClassName: nvidia
       containers:
-      - image: linuxserver/jellyfin:10.9.7
+      - image: nyanmisaka/jellyfin:240401-amd64
         imagePullPolicy: IfNotPresent
         name: container-0
         ports:
@@ -29,10 +34,10 @@ spec:
         volumeMounts:
           - mountPath: /config
             name: jellyfin
-            subPath: docker/jellyfin/
+            subPath: docker/jellyfin
           - mountPath: /data
             name: jellyfin
-            subPath: media
+            subPath: Media/Movies
         resources:
           limits:
             nvidia.com/gpu: 1 
@@ -43,7 +48,6 @@ spec:
             value: all
           - name: NVIDIA_DRIVER_CAPABILITIES
             value: all
-
       restartPolicy: Always
       volumes:
         - name: jellyfin
