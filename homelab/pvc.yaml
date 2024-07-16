@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-pvc
-  namespace: jellyfin
+  name: media-pvc
+  namespace: homelab
 spec:
   accessModes:
     - ReadWriteMany

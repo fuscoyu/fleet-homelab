@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: navidrom
+  namespace: homelab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: navidrom
+  template:
+    metadata:
+      labels:
+        app: navidrom
+      namespace: homelab
+    spec:
+      containers:
+      - image: deluan/navidrome:0.52.5
+        imagePullPolicy: IfNotPresent
+        name: container-0
+        ports:
+        - containerPort: 4533
+          name: navidrom
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+        volumeMounts:
+        - mountPath: /config
+          name: media
+          subPath: docker/navidrome
+        - mountPath: /music
+          name: media
+          subPath: Media/Music
+        env:
+        - name: TZ
+          value: Asia/Shanghai
+        - name: ND_DEFAULTLANGUAGE
+          value: zh-Hans
+        - name: ND_ENABLEGRAVATAR
+          value: 'true'
+        - name: ND_MUSICFOLDER
+          value: /music
+        - name: ND_DATAFOLDER
+          value: /config
+        - name: ND_LASTFM_ENABLED
+          value: 'true'
+        - name: ND_LASTFM_APIKEY
+          value: ba2cadafe2b0c6c0041f43d18e43cb53
+        - name: ND_LASTFM_SECRET
+          value: 239bf2b69a4e23d0a6f9eb1173dd2257
+        - name: ND_SPOTIFY_ID
+          value: 3bb13c68f6c6407983bea18bae42a779
+        - name: ND_SPOTIFY_SECRET
+          value: f2c89532bd2b4e68aa69e085cb3eee88"
+        - name: ND_LASTFM_LANGUAGE
+          value: zh
+        - name: ND_LOGLEVEL
+          value: info
+      restartPolicy: Always
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-pvc

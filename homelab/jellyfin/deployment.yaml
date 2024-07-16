@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jellyfin
-  namespace: jellyfin
+  namespace: homelab
 spec:
   replicas: 1
   strategy:
@@ -17,7 +17,7 @@ spec:
     metadata:
       labels:
         app: jellyfin
-      namespace: jellyfin
+      namespace: homelab
     spec:
       runtimeClassName: nvidia
       containers:
@@ -33,10 +33,10 @@ spec:
           privileged: true
         volumeMounts:
           - mountPath: /config
-            name: jellyfin
+            name: media
             subPath: docker/jellyfin
           - mountPath: /data
-            name: jellyfin
+            name: media
             subPath: Media/Movies
         resources:
           limits:
@@ -50,6 +50,6 @@ spec:
             value: all
       restartPolicy: Always
       volumes:
-        - name: jellyfin
+        - name: media
           persistentVolumeClaim:
-            claimName: jellyfin-pvc
+            claimName: media-pvc

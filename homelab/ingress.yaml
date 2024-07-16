@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jellyfin-ingress
-  namespace: jellyfin
+  name: homelab-ingress
+  namespace: homelab
 spec:
   ingressClassName: traefik
   rules:
@@ -14,5 +14,15 @@ spec:
             name: jellyfin-service
             port:
               number: 8096
+        path: /
+      pathType: ImplementationSpecific
+  - host: navidrome.homelab
+    http:
+      paths:
+      - backend:
+          service:
+            name: navidrome-service
+            port:
+              number: 4533
         path: /
       pathType: ImplementationSpecific
