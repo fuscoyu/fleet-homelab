@@ -15,7 +15,7 @@ spec:
             port:
               number: 8096
         path: /
-      pathType: ImplementationSpecific
+        pathType: ImplementationSpecific
   - host: navidrome.homelab
     http:
       paths:
@@ -25,4 +25,14 @@ spec:
             port:
               number: 4533
         path: /
-      pathType: ImplementationSpecific
+        pathType: ImplementationSpecific
+  - host: lrcapi.homelab
+    http:
+      paths:
+      - backend:
+          service:
+            name: lrcapi-service
+            port:
+              number: 28883
+        path: /
+        pathType: ImplementationSpecific

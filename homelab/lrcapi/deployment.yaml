@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lrcapi
+  namespace: homelab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lrcapi
+  template:
+    metadata:
+      labels:
+        app: lrcapi
+      namespace: homelab
+    spec:
+      containers:
+      - image: hisatri/lrcapi:1.5.4
+        imagePullPolicy: IfNotPresent
+        name: lrcapi
+        ports:
+        - containerPort: 28883
+          name: lrcapi
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+        volumeMounts:
+        - mountPath: /music
+          name: media
+          subPath: Media/Music
+      restartPolicy: Always
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-pvc

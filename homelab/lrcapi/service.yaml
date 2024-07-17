@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lrcapi-service
+  namespace: homelab
+spec:
+  ports:
+  - name: http
+    port: 28883
+    protocol: TCP
+    targetPort: 28883
+  selector:
+    app: lrcapi
+  type: ClusterIP

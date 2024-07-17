@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: navidrom
+  name: navidrome
   namespace: homelab
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: navidrom
+      app: navidrome
   template:
     metadata:
       labels:
-        app: navidrom
+        app: navidrome
       namespace: homelab
     spec:
       containers:
       - image: deluan/navidrome:0.52.5
         imagePullPolicy: IfNotPresent
-        name: container-0
+        name: navidrome
         ports:
         - containerPort: 4533
-          name: navidrom
+          name: navidrome
           protocol: TCP
         securityContext:
           allowPrivilegeEscalation: false
@@ -32,6 +32,9 @@ spec:
         - mountPath: /music
           name: media
           subPath: Media/Music
+        - name: navidrome-secret
+          mountPath: "/etc/secret"
+          readOnly: true
         env:
         - name: TZ
           value: Asia/Shanghai
@@ -46,13 +49,25 @@ spec:
         - name: ND_LASTFM_ENABLED
           value: 'true'
         - name: ND_LASTFM_APIKEY
-          value: ba2cadafe2b0c6c0041f43d18e43cb53
+          valueFrom:
+            secretKeyRef:
+              name: navidrome-secret
+              key: ND_LASTFM_APIKEY
         - name: ND_LASTFM_SECRET
-          value: 239bf2b69a4e23d0a6f9eb1173dd2257
+          valueFrom:
+            secretKeyRef:
+              name: navidrome-secret
+              key: ND_LASTFM_SECRET
         - name: ND_SPOTIFY_ID
-          value: 3bb13c68f6c6407983bea18bae42a779
+          valueFrom:
+            secretKeyRef:
+              name: navidrome-secret
+              key: ND_SPOTIFY_ID
         - name: ND_SPOTIFY_SECRET
-          value: f2c89532bd2b4e68aa69e085cb3eee88"
+          valueFrom:
+            secretKeyRef:
+              name: navidrome-secret
+              key: ND_SPOTIFY_SECRET
         - name: ND_LASTFM_LANGUAGE
           value: zh
         - name: ND_LOGLEVEL
@@ -62,3 +77,6 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: media-pvc
+        - name: navidrome-secret
+          secret:
+            secretName: navidrome-secret
