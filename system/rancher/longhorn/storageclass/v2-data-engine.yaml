@@ -4,7 +4,7 @@ metadata:
   name: longhorn-v2-data-engine
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
-reclaimPolicy: Delete
+reclaimPolicy: Retain
 volumeBindingMode: Immediate
 parameters:
   # backup, backingImage and snapshot related parameters are not supported in SPDK preview stage

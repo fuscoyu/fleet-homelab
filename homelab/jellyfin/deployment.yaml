@@ -23,7 +23,7 @@ spec:
       containers:
       - image: nyanmisaka/jellyfin:240401-amd64
         imagePullPolicy: IfNotPresent
-        name: container-0
+        name: jellyfin
         ports:
           - containerPort: 8096
             name: jellyfin
